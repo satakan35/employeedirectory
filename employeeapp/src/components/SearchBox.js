@@ -10,7 +10,7 @@ function SearchBox({ handleSearchChange }) {
           name="search"
           type="text"
           className="form-control"
-          placeholder="Search for a Gif"
+          placeholder="Search"
           id="search"
         />
         <button onClick={props.handleFormSubmit} className="btn btn-primary mt-3">
