@@ -4,34 +4,22 @@ import "../styles/Nav.css";
 
 function Nav({ handleSearchChange }) {
   return (
-    <nav className="navbar navbar-expand navbar-light bg-light">
-     {/* We render the SearchBox here and pass in necessary props */}
-     <Link className="navbar-brand" to="/">
-        Wikipedia Searcher
-      </Link>
-      <div>
-        <ul className="navbar-nav">
-          <li className="nav-item">
-            <Link
-              to="/"
-              className={
-                window.location.pathname === "/" || window.location.pathname === "/home"
-                  ? "nav-link active"
-                  : "nav-link"
-              }
-            >
-              Home
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link
-              to="/signup"
-              className={window.location.pathname === "/signup" ? "nav-link active" : "nav-link"}
-            >
-              Sign Up
-            </Link>
-          </li>
-        </ul>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <button
+        className="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span className="navbar-toggler-icon" />
+      </button>
+      <div className="collapse navbar-collapse row" id="navbarNav">
+        <div className="search-area col-4">
+          <SearchBox />
+        </div>
       </div>
     </nav>
   );

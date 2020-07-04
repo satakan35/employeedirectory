@@ -57,12 +57,12 @@ export default class DataArea extends Component {
   handleSearchChange = event => {
     console.log(event.target.value);
     const filter = event.target.value;
-    const filteredList = this.state.users.filter(item => {
+    const filteredList = this.state.users.filter(item => { 
+       let values = item.name.first.toLowerCase();
+      return values.indexOf(filter.toLowerCase()) !== -1;
       // merge data together, then see if user input is anywhere inside
-      let values = item.name.first.toLowerCase() + " " + item.name.last.toLowerCase();
-      console.log(filter, values)
-    if(values.indexOf(filter.toLowerCase()) !== -1){
-      return item};
+     
+      
     });
     this.setState({ filteredUsers: filteredList });
   }
