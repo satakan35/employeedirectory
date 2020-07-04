@@ -1,5 +1,8 @@
 import React, { Component } from "react"
 import "../styles/DataArea.css"
+import DataTable from "./DataTable";
+import Nav from "./Nav";
+import API from "../utils/API";
 
 
 export default class DataArea extends Component {
@@ -42,7 +45,7 @@ export default class DataArea extends Component {
         } else {
           return a[heading] - b[heading];
         }
-      } else { return a[heading].localeCompare(b[heading]);
+      } else { 
         // else statement to handle if this.state.order === descend
       }
 
@@ -56,7 +59,10 @@ export default class DataArea extends Component {
     const filter = event.target.value;
     const filteredList = this.state.users.filter(item => {
       // merge data together, then see if user input is anywhere inside
-
+      let values = item.name.first.toLowerCase() + " " + item.name.last.toLowerCase();
+      console.log(filter, values)
+    if(values.indexOf(filter.toLowerCase()) !== -1){
+      return item};
     });
     this.setState({ filteredUsers: filteredList });
   }
@@ -74,6 +80,9 @@ export default class DataArea extends Component {
         <div className="data-area">
           <DataTable
            // we will need to pass in props for headings, users, and handlesort here to DataTable
+           headings={this.headings}
+           users={this.state.users}
+           handleSort={this.handleSort}
           />
         </div>
       </>

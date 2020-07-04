@@ -1,21 +1,25 @@
+import React from 'react';
+import "../styles/SearchBox.css";
+
+
+
 function SearchBox({ handleSearchChange }) {
     return (
       <div className="searchbox">
         <form className="form-inline">
          {/* this will be the input box for the searchbox */}
-         <label htmlFor="search">Search:</label>
-        <input
-          onChange={props.handleInputChange}
-          value={props.search}
-          name="search"
-          type="text"
-          className="form-control"
-          placeholder="Search"
-          id="search"
+         <div className="input-group-prepend">
+            <span className="input-group-text" id="">
+              Search
+            </span>
+          </div>
+          <input
+          className="form-control mr-sm-2"
+          type="search"
+          placeholder="name"
+          aria-label="Search"
+          onChange={e => handleSearchChange(e)}
         />
-        <button onClick={props.handleFormSubmit} className="btn btn-primary mt-3">
-          Search
-        </button>
         </form>
       </div>
     );
