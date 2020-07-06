@@ -58,7 +58,10 @@ export default class DataArea extends Component {
     console.log(event.target.value);
     const filter = event.target.value;
     const filteredList = this.state.users.filter(item => { 
-       let values = item.name.first.toLowerCase();
+      console.log(item) 
+      let values = item.name.first.toLowerCase();
+      //let values = Object.values(item).toLowerCase();
+
       return values.indexOf(filter.toLowerCase()) !== -1;
       // merge data together, then see if user input is anywhere inside
      
@@ -69,6 +72,12 @@ export default class DataArea extends Component {
 
   componentDidMount() {
     API.getUsers().then(results => {
+      console.log(results)
+      this.setState ({
+        users:results.data.results,
+        filteredUsers:results.data.results
+      })
+
 
     });
   }
@@ -81,7 +90,7 @@ export default class DataArea extends Component {
           <DataTable
            // we will need to pass in props for headings, users, and handlesort here to DataTable
            headings={this.headings}
-           users={this.state.users}
+           users={this.state.filteredUsers}
            handleSort={this.handleSort}
           />
         </div>
